@@ -57,10 +57,39 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             .OnDelete(DeleteBehavior.Cascade);
         
         // === Add Seed Data Part ===
+        
+        modelBuilder.Entity<Country>().HasData(
+            new Country
+            {
+                CountryId = 1,
+                CountryName = "France",
+                CountryLanguage = "French"
+            },
+            new Country
+            {
+                CountryId = 2,
+                CountryName = "Iran",
+                CountryLanguage = "Persian (Farsi)"
+            },
+            new Country
+            {
+                CountryId = 3,
+                CountryName = "China/Taiwan",
+                CountryLanguage = "Mandarin"
+            },
+            new Country
+            {
+                CountryId = 4,
+                CountryName = "Japan",
+                CountryLanguage = "Japanese"
+            }
+        );
+        
         modelBuilder.Entity<Itinerary>()
             .HasData(
                 new Itinerary {
                     Id = 1,
+                    CountryId = 1,
                     Title = "First Trip",
                     StartDate = new DateTime(2026, 1, 15, 9, 0, 0, DateTimeKind.Utc),
                     EndDate = new DateTime(2026, 3, 14, 9, 0, 0, DateTimeKind.Utc)
@@ -86,7 +115,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                 new ItineraryItem { 
                     Id = 2,
                     ItineraryId = 1,
-                    LocationId =2,
+                    LocationId = 2,
                     StartDateTime = new DateTime(2026, 2, 16, 9, 0, 0, DateTimeKind.Utc),
                     EndDateTime = new DateTime(2026, 3, 15, 9, 0, 0, DateTimeKind.Utc),
                     StopOrder = 2
@@ -97,7 +126,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                     LocationId = 3,
                     StartDateTime = new DateTime(2026, 3, 16, 9, 0, 0, DateTimeKind.Utc),
                     EndDateTime = new DateTime(2026, 4, 15, 9, 0, 0, DateTimeKind.Utc),
-                    StopOrder = 3
+                    StopOrder = 1
                 },
                 new ItineraryItem { 
                     Id = 4,
@@ -105,9 +134,18 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                     LocationId = 4,
                     StartDateTime = new DateTime(2026, 4, 16, 9, 0, 0, DateTimeKind.Utc),
                     EndDateTime = new DateTime(2026, 5, 15, 9, 0, 0, DateTimeKind.Utc),
-                    StopOrder = 4
+                    StopOrder = 2
+                },
+                new ItineraryItem { 
+                    Id = 5,
+                    ItineraryId = 2,
+                    LocationId = 4,
+                    StartDateTime = new DateTime(2026, 5, 16, 9, 0, 0, DateTimeKind.Utc),
+                    EndDateTime = new DateTime(2026, 6, 1, 9, 0, 0, DateTimeKind.Utc),
+                    StopOrder = 3
                 }
                 );
+        
         modelBuilder.Entity<Location>()
             .HasData(
                 new Location { 
@@ -139,7 +177,97 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
                     Name = "Fenghuang Ancient City", 
                     Address = "Tuojiang Town, Fenghuang County, Xiangxi Tujia and Miao Autonomous Prefecture of Hunan Province",
                     Latitude = 27.952822m, 
-                    Longitude = 109.600989m}
+                    Longitude = 109.600989m
+                }
             );
+        
+            modelBuilder.Entity<Phrase>().HasData(
+                new Phrase {
+                    PhraseId = 1,
+                    CountryId = 1,
+                    Content = "Bonjour",
+                    Translation = "Hello"
+                },
+                new Phrase {
+                    PhraseId = 2,
+                    CountryId = 1,
+                    Content = "Merci",
+                    Translation = "Thank you"
+                },
+                new Phrase {
+                    PhraseId = 3,
+                    CountryId = 1,
+                    Content = "Où sont les toilettes ?",
+                    Translation = "Where is the restroom?"
+                },
+                new Phrase {
+                    PhraseId = 4,
+                    CountryId = 1,
+                    Content = "Combien ça coûte ?",
+                    Translation = "How much is it?"
+                },
+                new Phrase {
+                    PhraseId = 5,
+                    CountryId = 2,
+                    Content = "سلام",
+                    Translation = "Hello"
+                },
+                new Phrase {
+                    PhraseId = 6,
+                    CountryId = 2,
+                    Content = "متشکرم",
+                    Translation = "Thank you"
+                },
+                new Phrase {
+                    PhraseId = 7,
+                    CountryId = 2,
+                    Content = "سرویس بهداشتی کجاست؟",
+                    Translation = "Where is the restroom?"
+                },
+                new Phrase {
+                    PhraseId = 8,
+                    CountryId = 2,
+                    Content = "این چقدر است؟",
+                    Translation = "How much is it?"
+                },
+                new Phrase {
+                    PhraseId = 9,
+                    CountryId = 3,
+                    Content = "你好",
+                    Translation = "Hello"
+                },
+                new Phrase {
+                    PhraseId = 10,
+                    CountryId = 3,
+                    Content = "谢谢",
+                    Translation = "Thank you"
+                },
+                new Phrase {
+                    PhraseId = 11,
+                    CountryId = 3,
+                    Content = "请问卫生间在哪？",
+                    Translation = "Where is the restroom?"
+                },
+                new Phrase {
+                    PhraseId = 12,
+                    CountryId = 3,
+                    Content = "这个多少钱？",
+                    Translation = "How much is it?"
+                },
+                new Phrase {
+                    PhraseId = 13,
+                    CountryId = 4,
+                    Content = "こんにちは",
+                    Translation = "Hello"
+                },
+                new Phrase {
+                    PhraseId = 14,
+                    CountryId = 4,
+                    Content = "ありがとう",
+                    Translation = "Thank you"
+                }
+            );
+
+        
     }
 }
