@@ -243,6 +243,32 @@ namespace TripPlanner.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("countries", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CountryId = 1,
+                            CountryLanguage = "French",
+                            CountryName = "France"
+                        },
+                        new
+                        {
+                            CountryId = 2,
+                            CountryLanguage = "Persian (Farsi)",
+                            CountryName = "Iran"
+                        },
+                        new
+                        {
+                            CountryId = 3,
+                            CountryLanguage = "Mandarin",
+                            CountryName = "China/Taiwan"
+                        },
+                        new
+                        {
+                            CountryId = 4,
+                            CountryLanguage = "Japanese",
+                            CountryName = "Japan"
+                        });
                 });
 
             modelBuilder.Entity("TripPlanner.Models.Itinerary", b =>
@@ -286,6 +312,7 @@ namespace TripPlanner.Migrations
                         new
                         {
                             Id = 1,
+                            CountryId = 1,
                             EndDate = new DateTime(2026, 3, 14, 9, 0, 0, 0, DateTimeKind.Utc),
                             StartDate = new DateTime(2026, 1, 15, 9, 0, 0, 0, DateTimeKind.Utc),
                             Title = "First Trip"
@@ -359,7 +386,7 @@ namespace TripPlanner.Migrations
                             ItineraryId = 2,
                             LocationId = 3,
                             StartDateTime = new DateTime(2026, 3, 16, 9, 0, 0, 0, DateTimeKind.Utc),
-                            StopOrder = 3
+                            StopOrder = 1
                         },
                         new
                         {
@@ -368,7 +395,16 @@ namespace TripPlanner.Migrations
                             ItineraryId = 2,
                             LocationId = 4,
                             StartDateTime = new DateTime(2026, 4, 16, 9, 0, 0, 0, DateTimeKind.Utc),
-                            StopOrder = 4
+                            StopOrder = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EndDateTime = new DateTime(2026, 6, 1, 9, 0, 0, 0, DateTimeKind.Utc),
+                            ItineraryId = 2,
+                            LocationId = 4,
+                            StartDateTime = new DateTime(2026, 5, 16, 9, 0, 0, 0, DateTimeKind.Utc),
+                            StopOrder = 3
                         });
                 });
 
@@ -463,6 +499,106 @@ namespace TripPlanner.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("phrases", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PhraseId = 1,
+                            Content = "Bonjour",
+                            CountryId = 1,
+                            Translation = "Hello"
+                        },
+                        new
+                        {
+                            PhraseId = 2,
+                            Content = "Merci",
+                            CountryId = 1,
+                            Translation = "Thank you"
+                        },
+                        new
+                        {
+                            PhraseId = 3,
+                            Content = "Où sont les toilettes ?",
+                            CountryId = 1,
+                            Translation = "Where is the restroom?"
+                        },
+                        new
+                        {
+                            PhraseId = 4,
+                            Content = "Combien ça coûte ?",
+                            CountryId = 1,
+                            Translation = "How much is it?"
+                        },
+                        new
+                        {
+                            PhraseId = 5,
+                            Content = "سلام",
+                            CountryId = 2,
+                            Translation = "Hello"
+                        },
+                        new
+                        {
+                            PhraseId = 6,
+                            Content = "متشکرم",
+                            CountryId = 2,
+                            Translation = "Thank you"
+                        },
+                        new
+                        {
+                            PhraseId = 7,
+                            Content = "سرویس بهداشتی کجاست؟",
+                            CountryId = 2,
+                            Translation = "Where is the restroom?"
+                        },
+                        new
+                        {
+                            PhraseId = 8,
+                            Content = "این چقدر است؟",
+                            CountryId = 2,
+                            Translation = "How much is it?"
+                        },
+                        new
+                        {
+                            PhraseId = 9,
+                            Content = "你好",
+                            CountryId = 3,
+                            Translation = "Hello"
+                        },
+                        new
+                        {
+                            PhraseId = 10,
+                            Content = "谢谢",
+                            CountryId = 3,
+                            Translation = "Thank you"
+                        },
+                        new
+                        {
+                            PhraseId = 11,
+                            Content = "请问卫生间在哪？",
+                            CountryId = 3,
+                            Translation = "Where is the restroom?"
+                        },
+                        new
+                        {
+                            PhraseId = 12,
+                            Content = "这个多少钱？",
+                            CountryId = 3,
+                            Translation = "How much is it?"
+                        },
+                        new
+                        {
+                            PhraseId = 13,
+                            Content = "こんにちは",
+                            CountryId = 4,
+                            Translation = "Hello"
+                        },
+                        new
+                        {
+                            PhraseId = 14,
+                            Content = "ありがとう",
+                            CountryId = 4,
+                            Translation = "Thank you"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
